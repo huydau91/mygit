@@ -1,25 +1,20 @@
-var prompt = require('prompt');
- 
-  // 
-  // Start the prompt 
-  // 
-prompt.start();
+var prompt = require('prompt')
+    , arr = [];
 
-prompt.get([{
-    name: 'name',
-    description: 'Your name',
-    type: 'string',
-    required: true
-  }, {
-    name: 'surname',
-    description: 'Your surname',
-    type: 'string',
-    required: true,
-    message: 'Please dont use the demo credentials',
-    conform: function(surname) {
-      var name = prompt.history('name').value;
-      return (name !== 'John' || surname !== 'Smith');
-    }
-  }], function(err, results) {
-    console.log(results);
-  });
+function getAnother() {
+    prompt.get('number', function(err, result) {
+        if (err) done();
+        else {
+            arr.push(parseInt(result.number, 10));
+            getAnother();
+        }
+    })
+}
+
+function done() {
+    console.log(arr);
+}
+
+
+prompt.start();
+getAnother();
