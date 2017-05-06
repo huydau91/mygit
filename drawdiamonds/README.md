@@ -75,7 +75,7 @@ if (i == 0 || i == size){
 ## Cách chạy chương trình
 
 * Gitclone https://github.com/huydau91/nodejs/blob/master/drawdiamonds/drawdiamonds.js
-* Thay đổi n của `function(n)`
+* Thay đổi n của `function drawdiamonds(n)`
 * cd drawdiamonds
 * Chạy: node drawdiamonds.js
 
