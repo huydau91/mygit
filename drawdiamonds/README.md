@@ -1,7 +1,9 @@
 # Vẽ hình kim cương bằng JAVASCRIPT
 
 # Phân tích bài toán:
+
 B1: Nhập vào n là bán kính của hình kim cương(tâm đối xứng)
+
 B2: Xây dựng logic để có thể in dấu "*" và dấu " " hợp lý
 
 # Code xử lý chính:
