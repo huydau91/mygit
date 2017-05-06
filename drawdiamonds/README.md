@@ -7,7 +7,7 @@ B1: Nhập vào n là bán kính của hình kim cương(tâm đối xứng)
 B2: Xây dựng logic để có thể in dấu "*" và dấu " " hợp lý
 
 # Code xử lý chính:
-
+``` javascript
 	var str = '';
 	var size = n*2;
 	var a = n-1;
@@ -46,5 +46,6 @@ B2: Xây dựng logic để có thể in dấu "*" và dấu " " hợp lý
 			}
 		}
 	}
+```
 
 # Giải thích
