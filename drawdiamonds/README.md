@@ -74,10 +74,10 @@ if (i == 0 || i == size){
 
 ## Cách chạy chương trình
 
-* gitclone https://github.com/huydau91/nodejs/blob/master/drawdiamonds/drawdiamonds.js
+* Gitclone https://github.com/huydau91/nodejs/blob/master/drawdiamonds/drawdiamonds.js
 * Thay đổi n của `function(n)`
 * cd drawdiamonds
-* chạy: node drawdiamonds.js
+* Chạy: node drawdiamonds.js
 
 ## Kết quả
 
