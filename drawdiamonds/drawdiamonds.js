@@ -40,7 +40,7 @@ function drawdiamonds(n){
 	console.log(str);
 }
 
-drawdiamonds(10)  
+drawdiamonds(5)  
 
 
   // console.log("Nhap n:");
