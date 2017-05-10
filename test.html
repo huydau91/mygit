@@ -44,11 +44,24 @@
 				return "hsl(" + Math.random() * 360 + ",100%,50%)";
 			}); // Tao mau ngau nhien cho tower
 
+			move(n, 0, 200, 400)
 		}
 
+	// Chuyen thap
+	function move(n, a, b, c){
+		if (n > 0) {
+			move(n-1, a, c, b);
+			console.log("Move disk " + n + " from " + a + " to " + c);
+			tower
+			.transition()
+			.attr("x", c);
+
+			move(n-1, b, a, c);
+		}
+	}
 
 
-		tower(4);
+		tower(3);
 
 	</script>
 
