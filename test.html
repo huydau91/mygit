@@ -19,8 +19,7 @@
 	// Tao the svg
 	const svg = d3.select(".container").append("svg").attr("width", $(".container").width()).attr("height", $(window).height());
 
-	var test = [];
-	var arr = [];
+	var floor = [];
 	var biggest_floor = $(".container").width()/4;
 	var margin = biggest_floor + biggest_floor/2;
 	var unit_floor = '';
@@ -28,11 +27,11 @@
 	var floors = '';
 	var i = 1;
 
-	// Tao thap
-	function floor(n) {
+	// Tao floor
+	function build_floor(n) {
 		unit_floor = biggest_floor/n;
 		for (var i = 1; i<=n; i++){
-				// Them thap vao the avg
+				// Them floor vao the avg
 				svg.append("rect")
 				.attr("x", function(){
 					return (n-i)*(unit_floor/2); // Toa do x cua floor
@@ -46,7 +45,7 @@
 				.attr("height",40)
 				.classed("floor" + i + " color", true); // Chieu cao cua floor
 
-				test.push(d3.select(".floor" + i));
+				floor.push(d3.select(".floor" + i));
 			}
 
 			d3.selectAll(".color").style("fill", function() {
@@ -63,7 +62,7 @@
 		if (n > 0) {
 			move(n-1, a, c, b);
 
-			test[n-1]
+			floor[n-1]
 			.transition()
 			.delay(i*2000)
 			.transition()
@@ -85,7 +84,7 @@
 	}
 
 
-	floor(4);
+	build_floor(4);
 
 </script>
 
