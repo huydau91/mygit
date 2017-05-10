@@ -3,52 +3,54 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-	<style type="text/css">
-		*{
-			box-sizing: border-box;
-			margin: auto;
-		}
-		.block{
-			width: 100%;
-			height: 5rem;
-			background: rgba(51, 122, 183, 0.72);
-			border-style: outset;	
-		}
-		.col-sm-4{
-			padding-top: 4rem;
-		}
-	</style>
 </head>
+
 <body>
-<div>
-	<div class="col-sm-4">
-		<div class="block" style="(100-n*5)%"></div>
+	<div class="container" style="padding-top: 8rem;">
+		
 	</div>
-</div>
+
+
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script type="text/javascript">
-		function move(n, a, b, c) {
-			if (n > 0) {
-				move(n-1, a, c, b);
-				console.log("Move disk " + n + " from " + a + " to " + c);
-				move(n-1, b, a, c);
+
+	// Tao the svg
+	const svg = d3.select(".container").append("svg").attr("width", $(".container").width()).attr("height", $(window).height());
+
+	// Tao thap
+	function tower(n) {
+		var maxheight = n*30;
+		var biggesttower = $(".container").width()/4;
+		var unit_tower = biggesttower/n;
+		for (var i = 1; i<=n; i++){
+				// Them thap vao the avg
+				var tower = svg.append("rect")
+				.attr("x", function(){
+					return (n-i)*(unit_tower/2); // Toa do x cua tower
+				})
+				.attr("y", function(){
+					return i*30; // Toa do y cua tower
+				})
+				.attr("width", function(){
+					return i*unit_tower; // Chieu rong cua tower
+				})
+				.attr("height",30)
+				.classed("tower " + i, true); // Chieu cao cua tower
 			}
+
+			d3.selectAll(".tower").style("fill", function() {
+				return "hsl(" + Math.random() * 360 + ",100%,50%)";
+			}); // Tao mau ngau nhien cho tower
+
 		}
-		move(3, "A", "B", "C");
-// let a = 1;
-// 		function tinhgiaithua(n)
-// 		{
-// 			if(n >= 1)
-// 			{
-// 				a = n * tinhgiaithua(n - 1);
-// 				console.log(a);
-// 			}
-// 			return a;
-// 		}
-// 		tinhgiaithua(4);
+
+
+
+		tower(4);
 
 	</script>
+
 </body>
 </html>
