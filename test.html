@@ -19,51 +19,75 @@
 	// Tao the svg
 	const svg = d3.select(".container").append("svg").attr("width", $(".container").width()).attr("height", $(window).height());
 
+	var test = [];
+	var arr = [];
+	var biggest_floor = $(".container").width()/4;
+	var margin = biggest_floor + biggest_floor/2;
+	var unit_floor = '';
+	var tower_height = '';
+	var floors = '';
+	var i = 1;
+
 	// Tao thap
-	function tower(n) {
-		var maxheight = n*30;
-		var biggesttower = $(".container").width()/4;
-		var unit_tower = biggesttower/n;
+	function floor(n) {
+		unit_floor = biggest_floor/n;
 		for (var i = 1; i<=n; i++){
 				// Them thap vao the avg
-				var tower = svg.append("rect")
+				svg.append("rect")
 				.attr("x", function(){
-					return (n-i)*(unit_tower/2); // Toa do x cua tower
+					return (n-i)*(unit_floor/2); // Toa do x cua floor
 				})
 				.attr("y", function(){
-					return i*30; // Toa do y cua tower
+					return i*40; // Toa do y cua floor
 				})
 				.attr("width", function(){
-					return i*unit_tower; // Chieu rong cua tower
+					return i*unit_floor; // Chieu rong cua floor
 				})
-				.attr("height",30)
-				.classed("tower " + i, true); // Chieu cao cua tower
+				.attr("height",40)
+				.classed("floor" + i + " color", true); // Chieu cao cua floor
+
+				test.push(d3.select(".floor" + i));
 			}
 
-			d3.selectAll(".tower").style("fill", function() {
+			d3.selectAll(".color").style("fill", function() {
 				return "hsl(" + Math.random() * 360 + ",100%,50%)";
-			}); // Tao mau ngau nhien cho tower
+			}); // Tao mau ngau nhien cho floor
 
-			move(n, 0, 200, 400)
+			tower_height = n*40;
+			floors = n;
+			move(n, 0, margin, 2*margin)
 		}
 
-	// Chuyen thap
+	// Chuyen floor
 	function move(n, a, b, c){
 		if (n > 0) {
 			move(n-1, a, c, b);
-			console.log("Move disk " + n + " from " + a + " to " + c);
-			tower
+
+			test[n-1]
 			.transition()
-			.attr("x", c);
+			.delay(i*2000)
+			.transition()
+			.duration(750)
+			.attr("y", 0)
+			.transition()
+			.duration(750)
+			.attr("x", c+(floors-n)*(unit_floor/2))
+			.transition()
+			.duration(750)
+			.attr("y", n*40);
+			
+			i++;
+
+			console.log("Move disk " + n + " from " + a + " to " + c);
 
 			move(n-1, b, a, c);
 		}
 	}
 
 
-		tower(3);
+	floor(4);
 
-	</script>
+</script>
 
 </body>
 </html>
