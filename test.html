@@ -10,81 +10,80 @@
 		
 	</div>
 
-
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script type="text/javascript">
 
-	// Tao the svg
+	// Tạo thẻ svg
 	const svg = d3.select(".container").append("svg").attr("width", $(".container").width()).attr("height", $(window).height());
 
-	var floor = [];
-	var biggest_floor = $(".container").width()/4;
-	var margin = biggest_floor + biggest_floor/2;
-	var unit_floor = '';
-	var tower_height = '';
-	var floors = '';
+	var floor = []; // Tạo mảng chứa class floor
+	var biggest_floor = $(".container").width()/4; // Tính kích thước của tầng lớn nhất
+	var margin = biggest_floor + biggest_floor/2; // Tính khoảng cách giữa các tháp
+	var unit_floor = ''; // Tính đơn vị chiều rộng cho mỗi tầng
+	var tower_height = ''; // Tính chiều cao của tháp
+	var floors = ''; // Tổng số tầng
 	var i = 1;
 
-	// Tao floor
+	// Tạo tầng 
 	function build_floor(n) {
 		unit_floor = biggest_floor/n;
 		for (var i = 1; i<=n; i++){
-				// Them floor vao the avg
+				// Thêm tầng vào thẻ svg
 				svg.append("rect")
 				.attr("x", function(){
-					return (n-i)*(unit_floor/2); // Toa do x cua floor
+					return (n-i)*(unit_floor/2); // Tọa độ X của tầng
 				})
 				.attr("y", function(){
-					return i*40; // Toa do y cua floor
+					return i*40; // Tọa độ Y của tầng
 				})
 				.attr("width", function(){
-					return i*unit_floor; // Chieu rong cua floor
+					return i*unit_floor; // Chiều rộng của tầng
 				})
 				.attr("height",40)
-				.classed("floor" + i + " color", true); // Chieu cao cua floor
+				.classed("floor" + i + " color", true); // Chiều cao của tầng
 
-				floor.push(d3.select(".floor" + i));
+				floor.push(d3.select(".floor" + i)); // Push class floor vao mang floor
 			}
 
 			d3.selectAll(".color").style("fill", function() {
 				return "hsl(" + Math.random() * 360 + ",100%,50%)";
-			}); // Tao mau ngau nhien cho floor
+			}); // Tạo màu ngẫu nhiên cho các tầng
 
 			tower_height = n*40;
 			floors = n;
 			move(n, 0, margin, 2*margin)
 		}
 
-	// Chuyen floor
+	// Thuật toán chuyển các tầng
 	function move(n, a, b, c){
 		if (n > 0) {
-			move(n-1, a, c, b);
+			move(n-1, a, c, b); // Call back
 
-			floor[n-1]
+			floor[n-1] // Lấy phần tử từ mảng floor
 			.transition()
 			.delay(i*2000)
 			.transition()
 			.duration(750)
-			.attr("y", 0)
+			.attr("y", 0) // Di chuyển tầng ra khỏi cột theo chiều Y
 			.transition()
 			.duration(750)
-			.attr("x", c+(floors-n)*(unit_floor/2))
+			.attr("x", c+(floors-n)*(unit_floor/2)) // Di chuyển tầng sang vị trí X
 			.transition()
 			.duration(750)
-			.attr("y", n*40);
+			.attr("y", n*40); // Đặt tầng vào cột Y
 			
 			i++;
 
 			console.log("Move disk " + n + " from " + a + " to " + c);
 
-			move(n-1, b, a, c);
+			move(n-1, b, a, c); // Call back
 		}
 	}
 
 
-	build_floor(4);
+	build_floor(5);
 
 </script>
 
