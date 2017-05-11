@@ -63,16 +63,16 @@
 
 			floor[n-1] // Lấy phần tử từ mảng floor
 			.transition()
-			.delay(i*2000)
+			.delay(i*2000) // Thời gian trễ giữa các bước
 			.transition()
-			.duration(750)
+			.duration(750) // Thời gian thực hiện transition
 			.attr("y", 0) // Di chuyển tầng ra khỏi cột theo chiều Y
 			.transition()
 			.duration(750)
 			.attr("x", c+(floors-n)*(unit_floor/2)) // Di chuyển tầng sang vị trí X
 			.transition()
 			.duration(750)
-			.attr("y", n*40); // Đặt tầng vào cột Y
+			.attr("y", n*40); // Đặt tầng vào cột X có tọa độ Y tăng dần theo n
 			
 			i++;
 
