@@ -26,25 +26,13 @@
 	var tower_height = '';
 	var floors = '';
 	var i = 1;
-	var newX = '';
-	var newY = '';
-	var test = '';
-	var tower1 = [];
-	var tower2 = [];
-	var tower3 = [];
-	var arr = [];
 
 	// Tao floor
 	function build_floor(n) {
 		unit_floor = biggest_floor/n;
 		for (var i = 1; i<=n; i++){
-<<<<<<< HEAD
-				// Thêm tầng vào thẻ svg
-				arr[i-1] = svg.append("rect")
-=======
 				// Them floor vao the avg
 				svg.append("rect")
->>>>>>> 1a7a3a6b22cf131b904331f5d0479c1651a4048d
 				.attr("x", function(){
 					return (n-i)*(unit_floor/2); // Toa do x cua floor
 				})
@@ -66,22 +54,13 @@
 
 			tower_height = n*40;
 			floors = n;
-			move(n, 0, margin, 2*margin) // Call back function
+			move(n, 0, margin, 2*margin)
 		}
 
-<<<<<<< HEAD
-	// Thuật toán chuyển tầng qua các cột
-	function move(n, a, b, c){
-		if (n > 0) {
-			move(n-1, a, c, b); // Call back function
-
-			newX = c+(floors-n)*(unit_floor/2);
-=======
 	// Chuyen floor
 	function move(n, a, b, c){
 		if (n > 0) {
 			move(n-1, a, c, b);
->>>>>>> 1a7a3a6b22cf131b904331f5d0479c1651a4048d
 
 			floor[n-1]
 			.transition()
@@ -91,39 +70,21 @@
 			.attr("y", 0)
 			.transition()
 			.duration(750)
-<<<<<<< HEAD
-			.attr("x",newX) // Di chuyển tầng sang vị trí cột X
-			.transition()
-			.duration(750)
-			.attr("y", n*40); // Đặt tầng vào cột X có tọa độ Y tăng dần theo n
-
-			console.log(arr[n-1].attr("x"));
-
-=======
 			.attr("x", c+(floors-n)*(unit_floor/2))
 			.transition()
 			.duration(750)
 			.attr("y", n*40);
 			
->>>>>>> 1a7a3a6b22cf131b904331f5d0479c1651a4048d
 			i++;
 
 			console.log("Move disk " + n + " from " + a + " to " + c);
 
-<<<<<<< HEAD
-			move(n-1, b, a, c); // Call back function
-=======
 			move(n-1, b, a, c);
->>>>>>> 1a7a3a6b22cf131b904331f5d0479c1651a4048d
 		}
 	}
 
 
-<<<<<<< HEAD
-	build_floor(3);
-=======
 	build_floor(4);
->>>>>>> 1a7a3a6b22cf131b904331f5d0479c1651a4048d
 
 </script>
 
