@@ -1,97 +1,75 @@
-function drawdiamonds(n){
+function drawdiamonds(n,r){
 	var str = '';
-	var size = n*2;
-	var a = n-1;
-	for (var i = 0; i<size+1; i++){
-		if (i == 0 || i == size){
-			for (var j=0; j<size+1; j++){
-				if (j == n){
+	var width = r*2+1;
+
+	for (var i=0; i<width; i++){
+		if (i<=r){
+			for (var j=0; j<n*width; j++){
+				var j1 = j%width;
+				if (j1 == r+i || j1 == r-i){
 					str += "*";
 				}
 				else
 					str += " ";
 			}
-			str += '\n';
+			str += "\n";
 		}
 		else {
-			if (i <= n){
-				for (var j=0; j<size+1; j++){
-					if (j == n-i || j == n+i){
-						str += "*";
-					}
-					else
-						str += " ";
+			var a = i - r
+			for (var j=0; j<n*width; j++){
+				var j1 = j%width;
+				if (j1 == a || j1 == width-a-1){
+					str += "*";
 				}
-				str += '\n';
+				else
+					str += " ";
 			}
-			else {
-				for (var j=0; j<size+1; j++){
-					if (j == n-a || j == n+a){
-						str += "*";
-					}
-					else
-						str += " ";
-				}
-				a--;
-				str += '\n';
-			}
+			str += "\n";
 		}
 	}
 	console.log(str);
 }
 
-drawdiamonds(5)  
+drawdiamonds(4,2)
 
 
-  // console.log("Nhap n:");
+// console.log("Nhap n va r:");
 
-  // var prompt = require('prompt');
+// var prompt = require('prompt');
 
-  // prompt.start();
+// prompt.start();
 
-  // prompt.get('n', function (err, result) {
-  // 	var n = result.n;
-  // 	var str = '';
-  // 	var size = n*2;
-  // 	var a = n-1;
-  // 	for (var i = 0; i < size + 1; i++){
-  // 		if (i == 0 || i == size){
-  // 			for (var j=0; j<size+1; j++){
-  // 				if (j == n){
-  // 					str += "*";
-  // 				}
-  // 				else{
-  // 					str += " ";
-  // 				}
-  // 			}
-  // 			str += '\n';
-  // 		}
-  // 		else {
-  // 			if (i <= n){
-  // 				for (var j=0; j<size+1; j++){
-  // 					if (j == n-i || j == n+i){
-  // 						str += "*";
-  // 					}
-  // 					else{
-  // 						str += " ";
-  // 					}
-  // 				}
-  // 				str += '\n';
-  // 			}
-  // 			else {
-  // 				for (var j=0; j<size+1; j++){
-  // 					if (j == n-a || j == n+a){
-  // 						str += "*";
-  // 					}
-  // 					else{
-  // 						str += " ";
-  // 					}
-  // 				}
-  // 				a--;
-  // 				str += '\n';
-  // 			}
-  // 		}
-  // 	}
-  // 	console.log(str);
-  // });
+// prompt.get(['n', 'r'], function (err, result) {
+// 	var n = result.n;
+// 	var r = result.r;
+// 	var str = '';
+// 	var width = r*2+1;
+
+// 	for (var i=0; i<width; i++){
+// 		if (i<=r){
+// 			for (var j=0; j<n*width; j++){
+// 				var j1 = j%width;
+// 				if (j1 == r+i || j1 == r-i){
+// 					str += "*";
+// 				}
+// 				else
+// 					str += " ";
+// 			}
+// 			str += "\n";
+// 		}
+// 		else {
+// 			var a = i - r;
+// 			for (var j=0; j<n*width; j++){
+// 				var j1 = j%width;
+// 				if (j1 == a || j1 == width-a-1){
+// 					str += "*";
+// 				}
+// 				else
+// 					str += " ";
+// 			}
+// 			str += "\n";
+// 		}
+// 	}
+// 	console.log(str);
+// });
 

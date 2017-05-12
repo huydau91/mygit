@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		function drawdiamonds(n,r){
+			var str = '';
+			var width = r*2+1;
+
+			for (var i=0; i<width; i++){
+				if (i<=r){
+					for (var j=0; j<n*width; j++){
+						var j1 = j%width;
+						if (j1 == r+i || j1 == r-i){
+							str += "*";
+						}
+						else
+							str += "&nbsp&nbsp";
+					}
+					str += "<br>";
+				}
+				else {
+					var a = i - r
+					for (var j=0; j<n*width; j++){
+						var j1 = j%width;
+						if (j1 == a || j1 == width-a-1){
+							str += "*";
+						}
+						else
+							str += "&nbsp&nbsp";
+					}
+					str += "<br>";
+				}
+			}
+
+
+			console.log(str);
+			document.write(str);
+		}
+
+		drawdiamonds(4,4)
+	</script>
+</body>
+</html>
