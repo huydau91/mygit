@@ -15,7 +15,7 @@ function drawdiamonds(n,r){
 			str += "\n";
 		}
 		else {
-			var a = i - r
+			var a = i - r;
 			for (var j=0; j<n*width; j++){
 				var j1 = j%width;
 				if (j1 == a || j1 == width-a-1){

@@ -9,41 +9,31 @@ B2: Xây dựng logic để có thể in dấu "*" và dấu " " hợp lý
 ## Code xử lý chính:
 ``` javascript
 	var str = '';
-	var size = n*2;
-	var a = n - 1;
-	for (var i = 0; i < size+1; i++){
-		if (i == 0 || i == size){
-			for (var j = 0; j < size+1; j++){
-				if (j == n){
+	var width = r*2+1;
+
+	for (var i=0; i<width; i++){
+		if (i<=r){
+			for (var j=0; j<n*width; j++){
+				var j1 = j%width;
+				if (j1 == r+i || j1 == r-i){
 					str += "*";
 				}
 				else
 					str += " ";
 			}
-			str += '\n';
+			str += "\n";
 		}
 		else {
-			if (i <= n){
-				for (var j = 0; j < size+1; j++){
-					if (j == n-i || j == n+i){
-						str += "*";
-					}
-					else
-						str += " ";
+			var a = i - r;
+			for (var j=0; j<n*width; j++){
+				var j1 = j%width;
+				if (j1 == a || j1 == width-a-1){
+					str += "*";
 				}
-				str += '\n';
+				else
+					str += " ";
 			}
-			else {
-				for (var j = 0; j < size+1; j++){
-					if (j == n-a || j == n+a){
-						str += "*";
-					}
-					else
-						str += " ";
-				}
-				a--;
-				str += '\n';
-			}
+			str += "\n";
 		}
 	}
 ```
@@ -53,21 +43,21 @@ B2: Xây dựng logic để có thể in dấu "*" và dấu " " hợp lý
 * Thực hiện vòng lặp qua từng hàng i
 
 ```javascript
-	for (var i = 0; i < size+1; i++)
+	for (var i=0; i<width; i++)
 ```
 
 * Với mỗi hàng thứ i, xét qua từng cột j
 
 ```javascript
-if (i == 0 || i == size){
-	for (var j=0; j < size+1; j++){
-	if (j == n){
-		str += "*";
+	for (var j=0; j<n*width; j++){
+		var j1 = j%width;
+		if (j1 == r+i || j1 == r-i){
+			str += "*";
+		}
+		else
+			str += " ";
 	}
-	else
-		str += " ";
-	}
-	str += '\n';
+	str += "\n";
 ```
 
 * Nếu thỏa mãn điều kiện logic sẽ in dấu "*", ngược lại in dấu " "
@@ -75,7 +65,7 @@ if (i == 0 || i == size){
 ## Cách chạy chương trình
 
 * Gitclone https://github.com/huydau91/nodejs/blob/master/drawdiamonds/drawdiamonds.js
-* Thay đổi n của `function drawdiamonds(n)`
+* Thay đổi n (số hình) và r (bán kính) của `function drawdiamonds(n,r)`
 * cd drawdiamonds
 * Chạy: node drawdiamonds.js
 
