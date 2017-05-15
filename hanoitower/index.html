@@ -10,7 +10,6 @@
 		<div>
 			<p style="text-transform: uppercase; font-size: 3rem; text-align: center; margin-bottom: 10rem;">hanoi towers</p>
 		</div>
-		
 	</div>
 
 
@@ -43,7 +42,7 @@
 			.attr("ry", 10)
 			.attr("width", 20)
 			.attr("height", n*40)
-			.attr("fill", "rgb(210, 105, 30)");
+			.attr("fill", "rgba(105, 105, 105, 0.8)");
 		}
 		for (var j=0; j<3; j++){
 			svg.append("rect")
@@ -55,7 +54,7 @@
 			.attr("ry", 10)
 			.attr("width", biggest_floor)
 			.attr("height", 20)
-			.attr("fill", "rgb(210, 105, 30)");
+			.attr("fill", "rgba(105, 105, 105, 0.8)");
 		}
 		
 
@@ -215,7 +214,6 @@
 			move(n-1, b, a, c);
 		}
 	}
-
 
 	build_floor(4);
 
